@@ -1,7 +1,14 @@
+const http = require("http");
+const { Server } = require("socket.io");
+
 const PORT = process.env.PORT || 3000;
 
-const io = require("socket.io")(PORT, {
-  cors: { origin: "*" }
+const server = http.createServer();
+
+const io = new Server(server, {
+  cors: {
+    origin: "*"
+  }
 });
 
 const queue = [];
@@ -49,4 +56,8 @@ io.on("connection", socket => {
     if (i !== -1) queue.splice(i, 1);
   });
 
+});
+
+server.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
 });
