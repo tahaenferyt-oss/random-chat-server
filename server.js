@@ -3,7 +3,10 @@ const { Server } = require("socket.io");
 
 const PORT = process.env.PORT || 3000;
 
-const server = http.createServer();
+const server = http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end("Socket.IO server running");
+});
 
 const io = new Server(server, {
   cors: {
@@ -22,10 +25,7 @@ io.on("connection", socket => {
     if (queue.length > 0) {
       const partnerId = queue.shift();
 
-      if (!io.sockets.sockets.get(partnerId)) {
-        socket.emit("search");
-        return;
-      }
+      if (!io.sockets.sockets.get(partnerId)) return;
 
       pairs.set(socket.id, partnerId);
       pairs.set(partnerId, socket.id);
