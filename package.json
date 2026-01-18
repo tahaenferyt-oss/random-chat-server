@@ -1,9 +1,9 @@
 {
-  "name": "random-chat",
+  "name": "red-random-chat",
   "version": "1.0.0",
   "main": "server.js",
-  "engines": {
-    "node": "18.x"
+  "scripts": {
+    "start": "node server.js"
   },
   "dependencies": {
     "socket.io": "^4.7.2"
