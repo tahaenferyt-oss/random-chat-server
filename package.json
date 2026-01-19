@@ -1,5 +1,5 @@
 {
-  "name": "red-random-chat",
+  "name": "random-chat-server",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
